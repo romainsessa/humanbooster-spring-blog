@@ -27,7 +27,7 @@ public class Post {
 	@Column(nullable = false)
 	private String title;
 
-	@OneToOne(mappedBy = "post", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private PostDetails details;
 
 	@OneToMany(mappedBy = "post", 
@@ -117,8 +117,7 @@ public class Post {
 
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", title=" + title + ", details=" + details + ", comments=" + comments + ", tags="
-				+ tags + "]";
+		return "Post [id=" + id + ", title=" + title + ", details=" + details + ", comments=" + comments + ", tags=" + tags + "]";
 	}
 
 }

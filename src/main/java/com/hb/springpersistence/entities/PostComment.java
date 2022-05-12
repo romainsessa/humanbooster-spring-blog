@@ -21,7 +21,7 @@ public class PostComment {
 	@Column(nullable = false)
 	private String review;
 	
-	@ManyToOne()
+	@ManyToOne
 	@JoinColumn(name = "post_id")
 	private Post post;
 
