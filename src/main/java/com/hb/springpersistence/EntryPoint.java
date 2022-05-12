@@ -1,6 +1,7 @@
 package com.hb.springpersistence;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 import org.slf4j.Logger;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import com.hb.springpersistence.dto.PostDTO;
+import com.hb.springpersistence.dto.TagDTO;
 import com.hb.springpersistence.entities.Post;
 import com.hb.springpersistence.entities.PostComment;
 import com.hb.springpersistence.entities.PostDetails;
@@ -101,18 +104,24 @@ public class EntryPoint implements CommandLineRunner {
 				break;
 			case 2:
 				if (entityChoice == 1) {
-					Iterable<Post> posts = pService.getPosts();
-					for (Post p : posts) {
+//					Iterable<Post> posts = pService.getPosts();
+//					for (Post p : posts) {
+//						logger.info(p.toString());
+//					}
+					List<PostDTO> posts = pService.getPostDTOs();
+					for(PostDTO p : posts) {
 						logger.info(p.toString());
 					}
+					
+					
 				} else if (entityChoice == 2) {
 					Iterable<PostComment> comments = cService.getComments();
 					for (PostComment c : comments) {
 						logger.info(c.toString());
 					}
 				} else if (entityChoice == 3) {
-					Iterable<Tag> tags = tService.getTags();
-					for (Tag t : tags) {
+					List<TagDTO> tags = tService.getTagDTOs();
+					for (TagDTO t : tags) {
 						logger.info(t.toString());
 					}
 				}

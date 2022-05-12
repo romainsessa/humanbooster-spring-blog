@@ -27,7 +27,7 @@ public class Post {
 	@Column(nullable = false)
 	private String title;
 
-	@OneToOne(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "post", cascade = CascadeType.ALL)
 	private PostDetails details;
 
 	@OneToMany(mappedBy = "post", 
