@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import com.hb.springpersistence.dto.PostDTO;
 import com.hb.springpersistence.dto.transformers.TransformerFactory;
 import com.hb.springpersistence.entities.Post;
-import com.hb.springpersistence.entities.PostDetails;
 import com.hb.springpersistence.entities.Tag;
 import com.hb.springpersistence.repositories.PostRepository;
 import com.hb.springpersistence.repositories.TagRepository;
@@ -65,7 +64,8 @@ public class PostService implements IPostService {
 	}
 
 	public PostDTO save(PostDTO post) {
-		Post entityPost = TransformerFactory.getPostTransformer().transform(post);
+		Post entityPost = 
+				TransformerFactory.getPostTransformer().transform(post);
 
 		Post entity = postRepository.save(entityPost);
 
