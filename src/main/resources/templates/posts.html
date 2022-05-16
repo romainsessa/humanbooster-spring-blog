@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Post Page</title>
+</head>
+<body>
+
+	<table>
+		<thead>
+			<th>Id</th>
+			<th>Title</th>
+			<th>Created by</th>
+			<th>View</th>
+			<th>Delete</th>
+		</thead>
+		<tbody>
+			<tr th:each="post: ${posts}">
+				<td><span th:text="${post.id}"/></td>
+				<td><span th:text="${post.title}"/></td>
+				<td><span th:text="${post.details.createdBy}"/></td>
+				<td><a th:href="@{/post/{id}(id=${post.id})}" >View</a></td>
+				<td><a th:href="@{/post/{id}/delete(id=${post.id})}">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

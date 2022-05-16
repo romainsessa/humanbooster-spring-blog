@@ -14,9 +14,11 @@ public interface IPostService {
 	
 	public Iterable<Post> getPosts();
 	
+	public PostDTO getPostDTO(Integer id);
+	
 	public List<PostDTO> getPostDTOs();
 
-	public Post save(Post post);
+	public PostDTO save(PostDTO post);
 
 	public void delete(Integer id);
 

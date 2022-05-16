@@ -3,7 +3,6 @@ package com.hb.springpersistence.dto.transformers;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.hb.springpersistence.dto.PostCommentDTO;
@@ -12,6 +11,7 @@ import com.hb.springpersistence.dto.PostDetailsDTO;
 import com.hb.springpersistence.dto.TagDTO;
 import com.hb.springpersistence.entities.Post;
 import com.hb.springpersistence.entities.PostComment;
+import com.hb.springpersistence.entities.PostDetails;
 import com.hb.springpersistence.entities.Tag;
 
 @Component
@@ -49,6 +49,19 @@ public class PostTransformer {
 			pDTO.setTags(tagDTOs);
 		}
 		return pDTO;
+	}
+
+	public Post transform(PostDTO post) {
+		Post entityPost = new Post();
+		entityPost.setTitle(post.getTitle());
+
+		PostDetails detailsEntity = new PostDetails();
+		detailsEntity.setCreated_by(post.getDetails().getCreatedBy());
+		detailsEntity.setCreate_on(post.getDetails().getCreatedOn());
+
+		entityPost.setDetails(detailsEntity);
+
+		return entityPost;
 	}
 
 }
