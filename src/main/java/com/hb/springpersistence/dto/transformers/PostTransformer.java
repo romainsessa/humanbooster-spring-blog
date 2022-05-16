@@ -53,9 +53,11 @@ public class PostTransformer {
 
 	public Post transform(PostDTO post) {
 		Post entityPost = new Post();
+		entityPost.setId(post.getId());
 		entityPost.setTitle(post.getTitle());
 
 		PostDetails detailsEntity = new PostDetails();
+		detailsEntity.setId(post.getDetails().getId());
 		detailsEntity.setCreated_by(post.getDetails().getCreatedBy());
 		detailsEntity.setCreate_on(post.getDetails().getCreatedOn());
 

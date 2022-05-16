@@ -10,17 +10,21 @@
 		<thead>
 			<th>Id</th>
 			<th>Title</th>
-			<th>Created by</th>
+			<th>Created By</th>
+			<th>Created On</th>
 			<th>View</th>
 			<th>Delete</th>
+			<th>Update</th>
 		</thead>
 		<tbody>
 			<tr th:each="post: ${posts}">
 				<td><span th:text="${post.id}"/></td>
 				<td><span th:text="${post.title}"/></td>
 				<td><span th:text="${post.details.createdBy}"/></td>
+				<td><span th:text="${#dates.format(post.details.createdOn, 'yyyy-MM-dd')}" /></td>
 				<td><a th:href="@{/post/{id}(id=${post.id})}" >View</a></td>
 				<td><a th:href="@{/post/{id}/delete(id=${post.id})}">Delete</a></td>
+				<td><a th:href="@{/post/{id}/update(id=${post.id})}" >Update</a></td>
 			</tr>
 		</tbody>
 	</table>

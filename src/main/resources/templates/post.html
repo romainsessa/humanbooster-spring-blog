@@ -11,6 +11,8 @@
 	<span th:text="${post.title}" />
 	<br>
 	<span th:text="${post.details.createdBy}" />
+	<br>
+	<span th:text="${#dates.format(post.details.createdOn, 'yyyy-MM-dd')}" />
 
 </body>
 </html>

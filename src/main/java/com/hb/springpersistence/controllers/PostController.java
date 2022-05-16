@@ -38,23 +38,32 @@ public class PostController {
 		return "posts";
 	}
 	
-	@GetMapping("/new") // http://localhost:9000/post/new
-	public String getForm(Model model) {
+	@GetMapping("/new")
+	public String getCreateForm(Model model) {
 		PostDTO post = new PostDTO();
 		post.setDetails(new PostDetailsDTO());
 		model.addAttribute("post", post);
 		return "newPost";
 	}
 	
+	@GetMapping("{id}/update")
+	public String getUpdateForm(@PathVariable(name="id") Integer id, Model model) {
+		PostDTO post = postService.getPostDTO(id);
+		model.addAttribute("post", post);
+		return "updatePost";
+	}
+	
 	@PostMapping
-	public ModelAndView createPost(@ModelAttribute PostDTO post) {
-		post.getDetails().setCreatedOn(new Date());
-		postService.save(post);		
-		return new ModelAndView("redirect:/post");
+	public ModelAndView save(@ModelAttribute PostDTO post) {
+		if(post.getId() == null) {
+			post.getDetails().setCreatedOn(new Date());
+		}		
+		post = postService.save(post);		
+		return new ModelAndView("redirect:/post/"+post.getId());
 	}
 	
 	@GetMapping("{id}/delete")
-	public ModelAndView deletePost(@PathVariable(name = "id") Integer id) {
+	public ModelAndView delete(@PathVariable(name = "id") Integer id) {
 		postService.delete(id);
 		return new ModelAndView("redirect:/post");
 	}

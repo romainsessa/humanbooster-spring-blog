@@ -2,10 +2,13 @@ package com.hb.springpersistence.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class PostDetailsDTO {
 
 	private Integer id;
 	private String createdBy;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdOn;
 
 	public Integer getId() {
