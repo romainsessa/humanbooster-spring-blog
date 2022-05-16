@@ -10,14 +10,9 @@ import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hb.springpersistence.dto.PostCommentDTO;
 import com.hb.springpersistence.dto.PostDTO;
-import com.hb.springpersistence.dto.PostDetailsDTO;
-import com.hb.springpersistence.dto.TagDTO;
-import com.hb.springpersistence.dto.transformers.PostTransformer;
 import com.hb.springpersistence.dto.transformers.TransformerFactory;
 import com.hb.springpersistence.entities.Post;
-import com.hb.springpersistence.entities.PostComment;
 import com.hb.springpersistence.entities.Tag;
 import com.hb.springpersistence.repositories.PostRepository;
 import com.hb.springpersistence.repositories.TagRepository;

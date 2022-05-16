@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hb.springpersistence.dto.TagDTO;
-import com.hb.springpersistence.dto.transformers.TagTransformer;
 import com.hb.springpersistence.dto.transformers.TransformerFactory;
 import com.hb.springpersistence.entities.Post;
 import com.hb.springpersistence.entities.Tag;
