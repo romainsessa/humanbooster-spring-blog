@@ -20,7 +20,7 @@ import com.hb.springpersistence.service.ICommentService;
 import com.hb.springpersistence.service.IPostService;
 import com.hb.springpersistence.service.ITagService;
 
-@Component
+//@Component
 public class EntryPoint implements CommandLineRunner {
 
 	private static Logger logger = LoggerFactory.getLogger(EntryPoint.class);
