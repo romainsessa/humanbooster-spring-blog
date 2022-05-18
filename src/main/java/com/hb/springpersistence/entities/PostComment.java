@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "comment")
 public class PostComment {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "comment_id")
@@ -20,7 +20,7 @@ public class PostComment {
 
 	@Column(nullable = false)
 	private String review;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "post_id")
 	private Post post;
@@ -48,7 +48,7 @@ public class PostComment {
 	public void setPost(Post post) {
 		this.post = post;
 	}
-	
+
 	public PostComment() {
 		// TODO Auto-generated constructor stub
 	}
@@ -63,7 +63,5 @@ public class PostComment {
 	public String toString() {
 		return "PostComment [id=" + id + ", review=" + review + "]";
 	}
-	
-	
 
 }

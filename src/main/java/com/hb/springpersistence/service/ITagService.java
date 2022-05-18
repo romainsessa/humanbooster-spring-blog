@@ -8,14 +8,12 @@ import com.hb.springpersistence.entities.Tag;
 
 public interface ITagService {
 
-	public Optional<Tag> getTag(Integer id);
-
-	public Iterable<Tag> getTags();
-	
 	public List<TagDTO> getTagDTOs();
 
-	public Tag save(Tag tag);
+	public TagDTO getTagDTO(Integer id);
 
 	public void delete(Integer id);
+
+	public TagDTO save(TagDTO tag);
 
 }

@@ -2,8 +2,6 @@ package com.hb.springpersistence.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,41 +19,38 @@ public class TagService implements ITagService {
 
 	@Autowired
 	private TagRepository tagRepository;
-	
-	@Override
-	public Optional<Tag> getTag(Integer id) {
-		return tagRepository.findById(id);
-	}
 
-	@Override
-	public Iterable<Tag> getTags() {
-		return tagRepository.findAll();
-	}
-	
 	@Override
 	public List<TagDTO> getTagDTOs() {
 		Iterable<Tag> tags = tagRepository.findAll();
 		List<TagDTO> tagDTOs = new ArrayList<>();
-		for(Tag tag : tags) {
+		for (Tag tag : tags) {
 			TagDTO tagDTO = TransformerFactory.getTagTransformer().transform(tag);
-			tagDTOs.add(tagDTO);			
-		}		
+			tagDTOs.add(tagDTO);
+		}
 		return tagDTOs;
 	}
 
+	public TagDTO getTagDTO(Integer id) {
+		Tag entityTag = tagRepository.findById(id).get();
+		return TransformerFactory.getTagTransformer().transform(entityTag);
+	}
+
 	@Override
-	public Tag save(Tag tag) {
-		return tagRepository.save(tag);
+	public TagDTO save(TagDTO tag) {
+		Tag entityTag = TransformerFactory.getTagTransformer().transform(tag);
+		entityTag = tagRepository.save(entityTag);
+		return TransformerFactory.getTagTransformer().transform(entityTag);
 	}
 
 	@Override
 	public void delete(Integer id) {
-		Tag t = getTag(id).get();
+		Tag t = tagRepository.findById(id).get();
 		List<Post> posts = new ArrayList<>();
 		posts.addAll(t.getPosts());
-		for(Post post : posts) {
+		for (Post post : posts) {
 			t.removePost(post);
-		}		
+		}
 		tagRepository.deleteById(id);
 	}
 

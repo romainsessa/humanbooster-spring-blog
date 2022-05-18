@@ -15,4 +15,14 @@ public class PostCommentTransformer {
 		return commentDTO;
 	}
 
+	public PostComment transform(PostCommentDTO comment) {
+		PostComment entityComment = new PostComment();
+		entityComment.setId(comment.getId());
+		entityComment.setReview(comment.getReview());
+
+		// TODO : à completer avec l'ajout du post dans l'entité Comment
+
+		return entityComment;
+	}
+
 }

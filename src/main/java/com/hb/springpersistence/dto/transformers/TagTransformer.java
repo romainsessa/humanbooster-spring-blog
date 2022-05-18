@@ -33,4 +33,12 @@ public class TagTransformer {
 		return tagDTO;
 	}
 
+	public Tag transform(TagDTO tag) {
+		Tag entity = new Tag();
+		entity.setId(tag.getId());
+		entity.setName(tag.getName());
+
+		return entity;
+	}
+
 }

@@ -64,7 +64,6 @@ public class PostDetails {
 	}
 
 	public PostDetails() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public PostDetails(Integer id, String created_by, Date create_on) {

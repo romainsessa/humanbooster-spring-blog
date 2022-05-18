@@ -29,9 +29,7 @@ public class Post {
 	@OneToOne(mappedBy = "post", cascade = CascadeType.ALL)
 	private PostDetails details;
 
-	@OneToMany(mappedBy = "post", 
-			cascade = CascadeType.ALL, 
-			orphanRemoval = true)
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PostComment> comments = new ArrayList<PostComment>();
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
@@ -116,7 +114,8 @@ public class Post {
 
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", title=" + title + ", details=" + details + ", comments=" + comments + ", tags=" + tags + "]";
+		return "Post [id=" + id + ", title=" + title + ", details=" + details + ", comments=" + comments + ", tags="
+				+ tags + "]";
 	}
 
 }

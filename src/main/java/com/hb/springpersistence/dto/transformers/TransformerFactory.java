@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TransformerFactory {
-	
+
 	public static PostTransformer getPostTransformer() {
 		return new PostTransformer();
 	}

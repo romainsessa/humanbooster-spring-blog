@@ -14,5 +14,9 @@
 	<br>
 	<span th:text="${#dates.format(post.details.createdOn, 'yyyy-MM-dd')}" />
 
+	<ul th:each="tag: ${post.tags}">
+		<li><span th:text="${tag.name}" /><a th:href="@{/post/{postid}/unmap/{tagid}(postid=${post.id},tagid=${tag.id})}">Unmap</a></li>
+	</ul>
+
 </body>
 </html>

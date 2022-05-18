@@ -8,7 +8,7 @@ public class SpringPersistenceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringPersistenceApplication.class, args);
-	
+
 	}
 
 }

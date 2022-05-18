@@ -52,6 +52,10 @@ public class PostTransformer {
 	}
 
 	public Post transform(PostDTO post) {
+		return transform(post, true);
+	}
+
+	public Post transform(PostDTO post, boolean withComment) {
 		Post entityPost = new Post();
 		entityPost.setId(post.getId());
 		entityPost.setTitle(post.getTitle());
@@ -62,6 +66,15 @@ public class PostTransformer {
 		detailsEntity.setCreate_on(post.getDetails().getCreatedOn());
 
 		entityPost.setDetails(detailsEntity);
+
+		if (withComment) {
+			for (PostCommentDTO comment : post.getComments()) {
+				PostComment entityComment = new PostComment();
+				entityComment.setId(comment.getId());
+				entityComment.setReview(comment.getReview());
+				entityPost.addComment(entityComment);
+			}
+		}
 
 		return entityPost;
 	}

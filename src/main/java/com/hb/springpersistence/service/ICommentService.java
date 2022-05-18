@@ -1,16 +1,15 @@
 package com.hb.springpersistence.service;
 
-import java.util.Optional;
-
-import com.hb.springpersistence.entities.PostComment;
+import java.util.List;
+import com.hb.springpersistence.dto.PostCommentDTO;
 
 public interface ICommentService {
 
-	public Optional<PostComment> getComment(Integer id);
+	public PostCommentDTO getCommentDTO(Integer id);	
 
-	public Iterable<PostComment> getComments();
+	public List<PostCommentDTO> getCommentDTOs();
 
-	public PostComment save(PostComment comment);
+	public PostCommentDTO save(PostCommentDTO comment);
 
 	public void delete(Integer id);
 
