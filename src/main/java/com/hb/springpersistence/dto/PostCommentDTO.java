@@ -4,6 +4,7 @@ public class PostCommentDTO {
 
 	private Integer id;
 	private String review;
+	private Integer postId;
 
 	public Integer getId() {
 		return id;
@@ -20,14 +21,23 @@ public class PostCommentDTO {
 	public void setReview(String review) {
 		this.review = review;
 	}
+	
+	public Integer getPostId() {
+		return postId;
+	}
+	
+	public void setPostId(Integer postId) {
+		this.postId = postId;
+	}
 
 	public PostCommentDTO() {
 	}
 
-	public PostCommentDTO(Integer id, String review) {
+	public PostCommentDTO(Integer id, String review, Integer postId) {
 		super();
 		this.id = id;
 		this.review = review;
+		this.postId = postId;
 	}
 
 	@Override

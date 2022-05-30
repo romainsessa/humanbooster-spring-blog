@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hb.springpersistence.dto.PostCommentDTO;
+import com.hb.springpersistence.dto.PostDTO;
 import com.hb.springpersistence.dto.transformers.TransformerFactory;
 import com.hb.springpersistence.entities.PostComment;
 import com.hb.springpersistence.repositories.CommentRepository;
@@ -18,6 +19,8 @@ public class CommentService implements ICommentService {
 
 	@Autowired
 	private CommentRepository commentRepository;
+	@Autowired
+	private PostService postService;
 
 	@Override
 	public PostCommentDTO getCommentDTO(Integer id) {
@@ -38,7 +41,8 @@ public class CommentService implements ICommentService {
 
 	@Override
 	public PostCommentDTO save(PostCommentDTO comment) {
-		PostComment entityComment = TransformerFactory.getPostCommentTransformer().transform(comment);
+		PostDTO post = postService.getPostDTO(comment.getPostId());		
+		PostComment entityComment = TransformerFactory.getPostCommentTransformer().transform(comment, post);
 		entityComment = commentRepository.save(entityComment);
 		return TransformerFactory.getPostCommentTransformer().transform(entityComment);
 	}

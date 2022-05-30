@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hb.springpersistence.controllers.formwrappers.PostTagFormWrapper;
+import com.hb.springpersistence.dto.PostCommentDTO;
 import com.hb.springpersistence.dto.PostDTO;
 import com.hb.springpersistence.dto.PostDetailsDTO;
 import com.hb.springpersistence.dto.TagDTO;
@@ -34,6 +35,10 @@ public class PostController {
 	public String getPost(@PathVariable(name = "id") Integer id, Model model) {
 		PostDTO post = postService.getPostDTO(id);
 		model.addAttribute("post", post);
+		
+		PostCommentDTO comment = new PostCommentDTO();
+		comment.setPostId(post.getId());
+		model.addAttribute("comment", comment);
 		return "post";
 	}
 
