@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.hb.springpersistence.repositories.TagProxy;
 
@@ -19,6 +20,14 @@ public class TempController {
 		model.addAttribute("tags", tagProxy.getTags());
 		
 		return "tags";
+	}
+	
+	@GetMapping("/temp/{id}")
+	public String getTag(@PathVariable(name = "id") Integer id, Model model) {
+		
+		model.addAttribute("tag", tagProxy.getTag(id));
+		
+		return "tag";
 	}
 	
 }
